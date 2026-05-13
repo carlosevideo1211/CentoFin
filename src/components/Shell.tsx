@@ -29,7 +29,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
     <div className="app-layout">
       <aside className="sidebar">
         <div className="sidebar-logo">
-          <div className="sidebar-logo-icon"><Zap size={18} color="#0A0F1E" /></div>
+          <div className="sidebar-logo-icon"><Zap size={18} style={{ color: '#0A0F1E' }} /></div>
           <div className="sidebar-logo-text">Cento<span>Fin</span></div>
         </div>
 

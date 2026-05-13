@@ -51,7 +51,7 @@ export default function Reports() {
             <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
             <XAxis dataKey="label" tick={{ fill:'var(--text2)', fontSize:12 }} />
             <YAxis tickFormatter={v => `R$${v}`} tick={{ fill:'var(--text2)', fontSize:11 }} width={75} />
-            <Tooltip contentStyle={{ background:'var(--bg2)', border:'1px solid var(--border)', borderRadius:8 }} formatter={(v: number) => [formatBRL(v), '']} />
+            <Tooltip contentStyle={{ background:'var(--bg2)', border:'1px solid var(--border)', borderRadius:8 }} formatter={(v: unknown) => [formatBRL(v as number), '']} />
             <Legend />
             <Bar dataKey="Receitas" fill="var(--income)"  radius={[4,4,0,0]} />
             <Bar dataKey="Despesas" fill="var(--expense)" radius={[4,4,0,0]} />

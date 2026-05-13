@@ -3,7 +3,7 @@ import { useFinance } from '../context/FinanceContext';
 import { useAuth } from '../context/AuthContext';
 import { CATEGORIES, formatBRL, filterByMonth, sumByType, groupByCategory, currentMonth } from '../types/index';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid } from 'recharts';
-import { Plus, TrendingUp, TrendingDown, Wallet, AlertTriangle, Zap } from 'lucide-react';
+import { Plus, TrendingUp, TrendingDown, Wallet, AlertTriangle } from 'lucide-react';
 import TransactionModal from '../components/TransactionModal';
 import TxItem from '../components/TxItem';
 import type { Transaction } from '../types/index';
@@ -113,7 +113,7 @@ export default function Dashboard() {
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
               <XAxis dataKey="label" tick={{ fill:'var(--text2)', fontSize:12 }} />
               <YAxis tick={{ fill:'var(--text2)', fontSize:11 }} tickFormatter={v => `R$${v}`} width={70} />
-              <Tooltip contentStyle={{ background:'var(--bg2)', border:'1px solid var(--border)', borderRadius:8 }} labelStyle={{ color:'var(--text2)' }} formatter={(v: number) => [formatBRL(v), 'Saldo']} />
+              <Tooltip contentStyle={{ background:'var(--bg2)', border:'1px solid var(--border)', borderRadius:8 }} labelStyle={{ color:'var(--text2)' }} formatter={(v: unknown) => [formatBRL(v as number), 'Saldo']} />
               <Line type="monotone" dataKey="saldo" stroke="var(--accent)" strokeWidth={2.5} dot={{ r:4, fill:'var(--accent)' }} />
             </LineChart>
           </ResponsiveContainer>
@@ -127,9 +127,9 @@ export default function Dashboard() {
               <ResponsiveContainer width="100%" height={140}>
                 <PieChart>
                   <Pie data={pieData} cx="50%" cy="50%" innerRadius={40} outerRadius={65} dataKey="value" paddingAngle={3}>
-                    {pieData.map((e, i) => <Cell key={i} fill={e.color} />)}
+                    {pieData.map((_e, i) => <Cell key={i} fill={pieData[i].color} />)}
                   </Pie>
-                  <Tooltip contentStyle={{ background:'var(--bg2)', border:'1px solid var(--border)', borderRadius:8 }} formatter={(v: number) => [formatBRL(v), '']} />
+                  <Tooltip contentStyle={{ background:'var(--bg2)', border:'1px solid var(--border)', borderRadius:8 }} formatter={(v: unknown) => [formatBRL(v as number), '']} />
                 </PieChart>
               </ResponsiveContainer>
               <div style={{ display:'flex', flexDirection:'column', gap:6, marginTop:8 }}>

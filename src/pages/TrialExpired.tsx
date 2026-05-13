@@ -1,6 +1,6 @@
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { Zap } from 'lucide-react';
+import { LogOut } from 'lucide-react';
 
 export default function TrialExpired() {
   const { signOut } = useAuth();

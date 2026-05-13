@@ -24,7 +24,7 @@ export default function Transactions() {
   };
   const monthLabel = (ym: string) => new Date(ym + '-01T12:00:00').toLocaleDateString('pt-BR', { month:'long', year:'numeric' });
 
-  const allCats = { ...CATEGORIES, ...Object.fromEntries(customCategories.map(c => [c.id, c])) };
+  const allCats: Record<string, { label: string; emoji: string; color?: string; bg?: string }> = { ...CATEGORIES, ...Object.fromEntries(customCategories.map(c => [c.id, c])) };
 
   const filtered = useMemo(() => {
     let txs = filterByMonth(transactions, month);
